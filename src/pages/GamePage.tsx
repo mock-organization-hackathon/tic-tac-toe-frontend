@@ -7,25 +7,28 @@ type Cell = Player | null;
 
 const GamePage: React.FC = () => {
   const navigate = useNavigate();
-  const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
+  const [board, setBoard] = useState<Cell[]>(Array(16).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState<Player>('X');
   const [winner, setWinner] = useState<Player | null>(null);
   const [winningLine, setWinningLine] = useState<number[]>([]);
   const [gameStatus, setGameStatus] = useState<'playing' | 'finished' | 'draw'>('playing');
 
-  // Winning combinations for 3x3 board
+  // Winning combinations for 4x4 board
   const winningCombinations = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-    [0, 4, 8], [2, 4, 6]             // Diagonals
+    // Rows
+    [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15],
+    // Columns
+    [0, 4, 8, 12], [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15],
+    // Diagonals
+    [0, 5, 10, 15], [3, 6, 9, 12]
   ];
 
   // Check for winner
   useEffect(() => {
     const checkWinner = () => {
       for (const combination of winningCombinations) {
-        const [a, b, c] = combination;
-        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        const [a, b, c, d] = combination;
+        if (board[a] && board[a] === board[b] && board[a] === board[c] && board[a] === board[d]) {
           setWinner(board[a]);
           setWinningLine(combination);
           setGameStatus('finished');
@@ -52,7 +55,7 @@ const GamePage: React.FC = () => {
   };
 
   const resetGame = () => {
-    setBoard(Array(9).fill(null));
+    setBoard(Array(16).fill(null));
     setCurrentPlayer('X');
     setWinner(null);
     setWinningLine([]);
@@ -60,7 +63,7 @@ const GamePage: React.FC = () => {
   };
 
   const getCellClassName = (index: number) => {
-    let className = "h-20 w-20 bg-gray-700 rounded-lg text-3xl font-bold transition-all duration-200 hover:bg-gray-600 flex items-center justify-center cursor-pointer";
+    let className = "h-16 w-16 bg-gray-700 rounded-lg text-2xl font-bold transition-all duration-200 hover:bg-gray-600 flex items-center justify-center cursor-pointer";
     
     if (board[index]) {
       className += " cursor-not-allowed";
@@ -90,7 +93,7 @@ const GamePage: React.FC = () => {
         >
           {/* Game Header */}
           <div className="text-center mb-8 text-white">
-            <h1 className="text-4xl font-bold mb-4">🎯 Tic-Tac-Toe Arena</h1>
+            <h1 className="text-4xl font-bold mb-4">🎯 Tic-Tac-Toe Arena (4x4)</h1>
             <div className="text-center mb-6">
               {gameStatus === 'playing' && (
                 <p className="text-blue-400 text-lg">
@@ -112,7 +115,7 @@ const GamePage: React.FC = () => {
 
           {/* Game Board */}
           <motion.div
-            className="grid grid-cols-3 gap-2 bg-gray-800 p-4 rounded-2xl shadow-2xl mx-auto max-w-md mb-8"
+            className="grid grid-cols-4 gap-2 bg-gray-800 p-4 rounded-2xl shadow-2xl mx-auto max-w-lg mb-8"
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -168,6 +171,14 @@ const GamePage: React.FC = () => {
                    '🤝 Draw'}
                 </span>
               </div>
+              <div>
+                <span className="text-gray-300">Board Size:</span>
+                <span className="ml-2 font-bold text-yellow-400">4x4</span>
+              </div>
+              <div>
+                <span className="text-gray-300">Win Condition:</span>
+                <span className="ml-2 font-bold text-yellow-400">4 in a row</span>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -176,4 +187,4 @@ const GamePage: React.FC = () => {
   );
 };
 
-export default GamePage; 
+export default GamePage;
