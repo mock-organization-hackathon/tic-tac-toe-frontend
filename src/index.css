@@ -4,11 +4,11 @@
 
 @layer base {
   * {
-    @apply border-gray-200;
+    @apply border-gray-600;
   }
   
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased bg-gray-900 text-white;
     font-feature-settings: 'cv11', 'ss01';
     font-variation-settings: 'opsz' 32;
     margin: 0;
@@ -22,39 +22,39 @@
   }
   
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg shadow-primary-200;
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg shadow-primary-900/50;
   }
   
   .btn-secondary {
-    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+    @apply btn bg-gray-700 text-gray-100 hover:bg-gray-600 focus:ring-gray-500 border border-gray-600;
   }
   
   .btn-success {
-    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500 shadow-lg shadow-success-200;
+    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500 shadow-lg shadow-success-900/50;
   }
   
   .btn-danger {
-    @apply btn bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-500 shadow-lg shadow-danger-200;
+    @apply btn bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-500 shadow-lg shadow-danger-900/50;
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6;
+    @apply bg-gray-800 bg-opacity-80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-600 p-6;
   }
   
   .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+    @apply w-full px-3 py-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
   }
   
   .game-board {
-    @apply grid grid-cols-3 gap-2 p-4 bg-white rounded-xl shadow-xl border-2 border-gray-200;
+    @apply grid grid-cols-3 gap-2 p-4 bg-gray-800 bg-opacity-90 backdrop-blur-sm rounded-xl shadow-xl border-2 border-gray-600;
   }
   
   .game-cell {
-    @apply aspect-square flex items-center justify-center text-4xl font-bold bg-gray-50 rounded-lg border-2 border-gray-200 hover:bg-gray-100 transition-all duration-200 cursor-pointer;
+    @apply aspect-square flex items-center justify-center text-4xl font-bold bg-gray-700 rounded-lg border-2 border-gray-600 hover:bg-gray-600 transition-all duration-200 cursor-pointer text-white;
   }
   
   .game-cell:hover:not(.occupied) {
-    @apply bg-primary-50 border-primary-300;
+    @apply bg-primary-800 border-primary-500;
   }
   
   .game-cell.occupied {
@@ -62,25 +62,25 @@
   }
   
   .game-cell.x {
-    @apply text-primary-600 bg-primary-50 border-primary-300;
+    @apply text-primary-400 bg-primary-900 bg-opacity-50 border-primary-600;
   }
   
   .game-cell.o {
-    @apply text-danger-600 bg-danger-50 border-danger-300;
+    @apply text-danger-400 bg-danger-900 bg-opacity-50 border-danger-600;
   }
   
   .game-cell.winning {
-    @apply bg-success-100 border-success-400 animate-pulse;
+    @apply bg-success-800 bg-opacity-70 border-success-400 animate-pulse;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
   }
   
   .glass {
-    @apply backdrop-blur-sm bg-white/80 border border-white/20;
+    @apply backdrop-blur-sm bg-gray-800 bg-opacity-40 border border-gray-600;
   }
   
   .animate-float {
@@ -100,4 +100,4 @@
     from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
     to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
   }
-} 
+}
