@@ -40,10 +40,10 @@ const HomePage: React.FC = () => {
           >
             <GameModeCard
               title="Quick Play"
-              description="Jump into a classic 3x3 game instantly"
-              icon="⚡"
+              description="Start playing instantly with our improved matchmaking!"
+              icon="🚀"
               color="from-blue-500 to-cyan-500"
-              onClick={() => navigate('/play')}
+              onClick={() => navigate('/quick-play')}
             />
             
             <GameModeCard
@@ -117,4 +117,4 @@ const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, c
   );
 };
 
-export default HomePage; 
+export default HomePage;
