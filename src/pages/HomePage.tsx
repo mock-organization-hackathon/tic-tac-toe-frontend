@@ -43,6 +43,8 @@ const HomePage: React.FC = () => {
               description="Jump into a classic 3x3 game instantly"
               icon="⚡"
               color="from-blue-500 to-cyan-500"
+              pattern="dots"
+              borderColor="border-blue-400"
               onClick={() => navigate('/play')}
             />
             
@@ -51,6 +53,8 @@ const HomePage: React.FC = () => {
               description="Challenge yourself with 5x5 boards"
               icon="🏰"
               color="from-green-500 to-emerald-500"
+              pattern="stripes"
+              borderColor="border-green-400"
               onClick={() => navigate('/play')}
             />
             
@@ -59,6 +63,8 @@ const HomePage: React.FC = () => {
               description="Create or join custom game rooms"
               icon="🏠"
               color="from-purple-500 to-pink-500"
+              pattern="grid"
+              borderColor="border-purple-400"
               onClick={() => navigate('/rooms')}
             />
             
@@ -67,6 +73,8 @@ const HomePage: React.FC = () => {
               description="See who's the ultimate champion"
               icon="🏆"
               color="from-yellow-500 to-orange-500"
+              pattern="diamonds"
+              borderColor="border-yellow-400"
               onClick={() => navigate('/leaderboard')}
             />
             
@@ -75,6 +83,8 @@ const HomePage: React.FC = () => {
               description="View your stats and achievements"
               icon="👤"
               color="from-indigo-500 to-purple-500"
+              pattern="waves"
+              borderColor="border-indigo-400"
               onClick={() => navigate('/profile')}
             />
             
@@ -83,6 +93,8 @@ const HomePage: React.FC = () => {
               description="Learn the ropes and master strategies"
               icon="📚"
               color="from-red-500 to-pink-500"
+              pattern="circles"
+              borderColor="border-red-400"
               onClick={() => navigate('/tutorial')}
             />
           </motion.div>
@@ -97,24 +109,39 @@ interface GameModeCardProps {
   description: string;
   icon: string;
   color: string;
+  pattern: string;
+  borderColor: string;
   onClick: () => void;
 }
 
-const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, color, onClick }) => {
+const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, color, pattern, borderColor, onClick }) => {
   return (
     <motion.div
-      className={`bg-gradient-to-br ${color} p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
+      className={`bg-gradient-to-br ${color} p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-4 ${borderColor} relative overflow-hidden`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`${title}: ${description}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
-      <div className="text-center">
-        <div className="text-4xl mb-4">{icon}</div>
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-gray-100 text-sm opacity-90">{description}</p>
+      {/* Pattern overlay for color-blind accessibility */}
+      <div className={`absolute inset-0 opacity-10 pattern-${pattern}`} aria-hidden="true"></div>
+      <div className="relative z-10">
+        <div className="text-center">
+          <div className="text-4xl mb-4" aria-hidden="true">{icon}</div>
+          <h3 className="text-xl font-bold text-white mb-2 drop-shadow-lg">{title}</h3>
+          <p className="text-gray-100 text-sm opacity-90 drop-shadow-md">{description}</p>
+        </div>
       </div>
     </motion.div>
   );
 };
 
-export default HomePage; 
+export default HomePage;

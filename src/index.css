@@ -9,8 +9,8 @@
   
   body {
     @apply font-sans antialiased;
-    font-feature-settings: 'cv11', 'ss01';
-    font-variation-settings: 'opsz' 32;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
     margin: 0;
     padding: 0;
   }
@@ -100,4 +100,56 @@
     from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
     to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
   }
-} 
+  
+  /* Pattern overlays for color-blind accessibility */
+  .pattern-dots {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 15px 15px;
+  }
+  
+  .pattern-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      currentColor,
+      currentColor 2px,
+      transparent 2px,
+      transparent 8px
+    );
+  }
+  
+  .pattern-grid {
+    background-image: 
+      linear-gradient(currentColor 1px, transparent 1px),
+      linear-gradient(90deg, currentColor 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+  
+  .pattern-diamonds {
+    background-image: repeating-conic-gradient(
+      from 45deg,
+      currentColor 0deg 90deg,
+      transparent 90deg 180deg
+    );
+    background-size: 16px 16px;
+  }
+  
+  .pattern-waves {
+    background-image: repeating-linear-gradient(
+      0deg,
+      currentColor,
+      currentColor 2px,
+      transparent 2px,
+      transparent 8px
+    );
+    transform: rotate(15deg);
+  }
+  
+  .pattern-circles {
+    background-image: radial-gradient(
+      circle at 25% 25%,
+      currentColor 2px,
+      transparent 2px
+    );
+    background-size: 20px 20px;
+  }
+}
