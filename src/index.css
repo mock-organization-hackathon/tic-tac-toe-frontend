@@ -72,6 +72,26 @@
   .game-cell.winning {
     @apply bg-success-100 border-success-400 animate-pulse;
   }
+  
+  .ascii-art {
+    @apply font-mono text-xs leading-none whitespace-pre text-gray-600;
+  }
+  
+  .ascii-art-large {
+    @apply font-mono text-sm leading-none whitespace-pre text-gray-700 font-bold;
+  }
+  
+  .ascii-art-title {
+    @apply font-mono text-lg leading-none whitespace-pre text-primary-600 font-bold;
+  }
+  
+  .ascii-art-winner {
+    @apply font-mono text-base leading-none whitespace-pre text-success-600 font-bold animate-pulse;
+  }
+  
+  .ascii-art-center {
+    @apply ascii-art text-center;
+  }
 }
 
 @layer utilities {
@@ -100,4 +120,4 @@
     from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
     to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
   }
-} 
+}

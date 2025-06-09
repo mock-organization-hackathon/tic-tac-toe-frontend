@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ASCII_ART } from 'tic-tac-toe-shared-types';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,6 +19,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen">
+      {/* Header with ASCII Art */}
+      <header className="bg-black bg-opacity-30 backdrop-blur-sm border-b border-white border-opacity-10 py-4">
+        <div className="container mx-auto px-4 text-center">
+          <pre className="text-cyan-400 text-xs md:text-sm font-mono whitespace-pre-wrap">
+            {ASCII_ART}
+          </pre>
+        </div>
+      </header>
+
       {/* Navigation */}
       <nav className="bg-black bg-opacity-20 backdrop-blur-sm border-b border-white border-opacity-10 sticky top-0 z-50">
         <div className="container mx-auto px-4">
@@ -61,4 +71,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default Layout; 
+export default Layout;
