@@ -100,4 +100,12 @@
     from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
     to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
   }
-} 
+
+  .ascii-art {
+    @apply font-mono text-xs leading-none text-gray-400 whitespace-pre select-none;
+  }
+  
+  .ascii-art-container {
+    @apply overflow-hidden;
+  }
+}

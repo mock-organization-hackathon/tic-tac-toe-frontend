@@ -9,6 +9,18 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
+  const instalilyAscii = `
+ ██▓ ███▄    █   ██████ ▄▄▄█████▓ ▄▄▄       ██▓     ██▓ ██▓  ▓██   ██▓
+▓██▒ ██ ▀█   █ ▒██    ▒ ▓  ██▒ ▓▒▒████▄    ▓██▒    ▓██▒▓██▒   ▒██  ██▒
+▒██▒▓██  ▀█ ██▒░ ▓██▄   ▒ ▓██░ ▒░▒██  ▀█▄  ▒██░    ▒██▒▒██░    ▒██ ██░
+░██░▓██▒  ▐▌██▒  ▒   ██▒░ ▓██▓ ░ ░██▄▄▄▄██ ▒██░    ░██░▒██░    ░ ▐██▓░
+░██░▒██░   ▓██░▒██████▒▒  ▒██▒ ░  ▓█   ▓██▒░██████▒░██░░██████▒ ░ ██▒▓░
+░▓  ░ ▒░   ▒ ▒ ▒ ▒▓▒ ▒ ░  ▒ ░░    ▒▒   ▓▒█░░ ▒░▓  ░░▓  ░ ▒░▓  ░  ██▒▒▒ 
+ ▒ ░░ ░░   ░ ▒░░ ░▒  ░ ░    ░      ▒   ▒▒ ░░ ░ ▒  ░ ▒ ░░ ░ ▒  ░▓██ ░▒░ 
+ ▒ ░   ░   ░ ░ ░  ░  ░    ░        ░   ▒     ░ ░    ▒ ░  ░ ░   ▒ ▒ ░░  
+ ░           ░       ░                 ░  ░    ░  ░ ░      ░  ░░ ░     
+                                                                ░ ░     `;
+
   const navItems = [
     { path: '/', label: 'Home', icon: '🏠' },
     { path: '/play', label: 'Quick Play', icon: '⚡' },
@@ -52,13 +64,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-black bg-opacity-20 backdrop-blur-sm border-t border-white border-opacity-10 py-4">
-        <div className="container mx-auto px-4 text-center text-gray-300">
-          <p>&copy; 2024 Tic-Tac-Toe Arena. Built for testing Multi Repository PR Orchestration.</p>
+      <footer className="bg-black bg-opacity-20 backdrop-blur-sm border-t border-white border-opacity-10 py-6">
+        <div className="container mx-auto px-4">
+          {/* ASCII Art */}
+          <div className="ascii-art-container mb-4 flex justify-center">
+            <pre className="ascii-art text-center">{instalilyAscii}</pre>
+          </div>
+          
+          <div className="text-center text-gray-300">
+            <p>&copy; 2024 Tic-Tac-Toe Arena. Built for testing Multi Repository PR Orchestration.</p>
+          </div>
         </div>
       </footer>
     </div>
   );
 };
 
-export default Layout; 
+export default Layout;
