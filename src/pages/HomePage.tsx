@@ -42,7 +42,8 @@ const HomePage: React.FC = () => {
               title="Quick Play"
               description="Jump into a classic 3x3 game instantly"
               icon="⚡"
-              color="from-blue-500 to-cyan-500"
+              color="from-blue-600 to-cyan-600"
+              borderPattern="border-4 border-blue-200 border-dashed"
               onClick={() => navigate('/play')}
             />
             
@@ -50,7 +51,8 @@ const HomePage: React.FC = () => {
               title="Giant Mode"
               description="Challenge yourself with 5x5 boards"
               icon="🏰"
-              color="from-green-500 to-emerald-500"
+              color="from-green-600 to-emerald-600"
+              borderPattern="border-4 border-green-200 border-dotted"
               onClick={() => navigate('/play')}
             />
             
@@ -58,7 +60,8 @@ const HomePage: React.FC = () => {
               title="Rooms"
               description="Create or join custom game rooms"
               icon="🏠"
-              color="from-purple-500 to-pink-500"
+              color="from-purple-600 to-pink-600"
+              borderPattern="border-4 border-purple-200 border-double"
               onClick={() => navigate('/rooms')}
             />
             
@@ -66,7 +69,8 @@ const HomePage: React.FC = () => {
               title="Leaderboard"
               description="See who's the ultimate champion"
               icon="🏆"
-              color="from-yellow-500 to-orange-500"
+              color="from-yellow-600 to-orange-600"
+              borderPattern="border-4 border-yellow-200 border-solid"
               onClick={() => navigate('/leaderboard')}
             />
             
@@ -74,7 +78,8 @@ const HomePage: React.FC = () => {
               title="Profile"
               description="View your stats and achievements"
               icon="👤"
-              color="from-indigo-500 to-purple-500"
+              color="from-indigo-600 to-purple-600"
+              borderPattern="border-4 border-indigo-200 border-dashed"
               onClick={() => navigate('/profile')}
             />
             
@@ -82,7 +87,8 @@ const HomePage: React.FC = () => {
               title="Tutorial"
               description="Learn the ropes and master strategies"
               icon="📚"
-              color="from-red-500 to-pink-500"
+              color="from-red-600 to-pink-600"
+              borderPattern="border-4 border-red-200 border-dotted"
               onClick={() => navigate('/tutorial')}
             />
           </motion.div>
@@ -97,24 +103,33 @@ interface GameModeCardProps {
   description: string;
   icon: string;
   color: string;
+  borderPattern: string;
   onClick: () => void;
 }
 
-const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, color, onClick }) => {
+const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, color, borderPattern, onClick }) => {
   return (
     <motion.div
-      className={`bg-gradient-to-br ${color} p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
+      className={`bg-gradient-to-br ${color} ${borderPattern} p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       <div className="text-center">
-        <div className="text-4xl mb-4">{icon}</div>
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-gray-100 text-sm opacity-90">{description}</p>
+        <div className="text-4xl mb-4 drop-shadow-lg">{icon}</div>
+        <h3 className="text-xl font-bold text-white mb-2 drop-shadow-lg">{title}</h3>
+        <p className="text-white text-sm opacity-95 drop-shadow-md">{description}</p>
       </div>
     </motion.div>
   );
 };
 
-export default HomePage; 
+export default HomePage;
