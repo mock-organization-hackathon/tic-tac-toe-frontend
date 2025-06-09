@@ -42,7 +42,9 @@ const HomePage: React.FC = () => {
               title="Quick Play"
               description="Jump into a classic 3x3 game instantly"
               icon="⚡"
-              color="from-blue-500 to-cyan-500"
+              color="from-blue-600 to-blue-800"
+              borderColor="border-blue-400"
+              borderPattern="border-solid border-4"
               onClick={() => navigate('/play')}
             />
             
@@ -50,7 +52,9 @@ const HomePage: React.FC = () => {
               title="Giant Mode"
               description="Challenge yourself with 5x5 boards"
               icon="🏰"
-              color="from-green-500 to-emerald-500"
+              color="from-green-600 to-green-800"
+              borderColor="border-green-400"
+              borderPattern="border-dashed border-4"
               onClick={() => navigate('/play')}
             />
             
@@ -58,7 +62,9 @@ const HomePage: React.FC = () => {
               title="Rooms"
               description="Create or join custom game rooms"
               icon="🏠"
-              color="from-purple-500 to-pink-500"
+              color="from-purple-600 to-purple-800"
+              borderColor="border-purple-400"
+              borderPattern="border-dotted border-4"
               onClick={() => navigate('/rooms')}
             />
             
@@ -66,7 +72,9 @@ const HomePage: React.FC = () => {
               title="Leaderboard"
               description="See who's the ultimate champion"
               icon="🏆"
-              color="from-yellow-500 to-orange-500"
+              color="from-yellow-600 to-yellow-800"
+              borderColor="border-yellow-400"
+              borderPattern="border-double border-4"
               onClick={() => navigate('/leaderboard')}
             />
             
@@ -74,7 +82,9 @@ const HomePage: React.FC = () => {
               title="Profile"
               description="View your stats and achievements"
               icon="👤"
-              color="from-indigo-500 to-purple-500"
+              color="from-indigo-600 to-indigo-800"
+              borderColor="border-indigo-400"
+              borderPattern="border-solid border-4 border-l-8"
               onClick={() => navigate('/profile')}
             />
             
@@ -82,7 +92,9 @@ const HomePage: React.FC = () => {
               title="Tutorial"
               description="Learn the ropes and master strategies"
               icon="📚"
-              color="from-red-500 to-pink-500"
+              color="from-red-600 to-red-800"
+              borderColor="border-red-400"
+              borderPattern="border-solid border-4 border-t-8"
               onClick={() => navigate('/tutorial')}
             />
           </motion.div>
@@ -97,13 +109,15 @@ interface GameModeCardProps {
   description: string;
   icon: string;
   color: string;
+  borderColor: string;
+  borderPattern: string;
   onClick: () => void;
 }
 
-const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, color, onClick }) => {
+const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, color, borderColor, borderPattern, onClick }) => {
   return (
     <motion.div
-      className={`bg-gradient-to-br ${color} p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
+      className={`bg-gradient-to-br ${color} ${borderColor} ${borderPattern} p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
@@ -117,4 +131,4 @@ const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, c
   );
 };
 
-export default HomePage; 
+export default HomePage;
