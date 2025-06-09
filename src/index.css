@@ -46,7 +46,7 @@
   }
   
   .game-board {
-    @apply grid grid-cols-3 gap-2 p-4 bg-white rounded-xl shadow-xl border-2 border-gray-200;
+    @apply grid grid-cols-3 gap-1 p-2 bg-white rounded-xl shadow-xl border-2 border-gray-200;
   }
   
   .game-cell {
@@ -100,4 +100,4 @@
     from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
     to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
   }
-} 
+}

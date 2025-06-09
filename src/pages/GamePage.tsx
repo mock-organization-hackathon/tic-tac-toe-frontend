@@ -60,7 +60,7 @@ const GamePage: React.FC = () => {
   };
 
   const getCellClassName = (index: number) => {
-    let className = "h-20 w-20 bg-gray-700 rounded-lg text-3xl font-bold transition-all duration-200 hover:bg-gray-600 flex items-center justify-center cursor-pointer";
+    let className = "h-16 w-16 bg-gray-700 rounded-lg text-3xl font-bold transition-all duration-200 hover:bg-gray-600 flex items-center justify-center cursor-pointer";
     
     if (board[index]) {
       className += " cursor-not-allowed";
@@ -112,7 +112,7 @@ const GamePage: React.FC = () => {
 
           {/* Game Board */}
           <motion.div
-            className="grid grid-cols-3 gap-2 bg-gray-800 p-4 rounded-2xl shadow-2xl mx-auto max-w-md mb-8"
+            className="grid grid-cols-3 gap-1 bg-gray-800 p-2 rounded-2xl shadow-2xl mx-auto max-w-sm mb-8"
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -176,4 +176,4 @@ const GamePage: React.FC = () => {
   );
 };
 
-export default GamePage; 
+export default GamePage;
