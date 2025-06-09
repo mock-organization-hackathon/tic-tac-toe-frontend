@@ -8,6 +8,7 @@ import GamePage from './pages/GamePage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import RoomsPage from './pages/RoomsPage'
 import ProfilePage from './pages/ProfilePage'
+import DeveloperPage from './pages/DeveloperPage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/leaderboard" element={<LeaderboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/tutorial" element={<HomePage />} />
+            <Route path="/developer" element={<DeveloperPage />} />
           </Routes>
         </motion.div>
       </Layout>
