@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="bg-black bg-opacity-20 backdrop-blur-sm border-b border-white border-opacity-10 sticky top-0 z-50">
+      <nav className="bg-black bg-opacity-90 backdrop-blur-sm border-b border-white border-opacity-20 sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="text-white text-xl font-bold">
@@ -52,7 +52,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-black bg-opacity-20 backdrop-blur-sm border-t border-white border-opacity-10 py-4">
+      <footer className="bg-black bg-opacity-90 backdrop-blur-sm border-t border-white border-opacity-20 py-8">
         <div className="container mx-auto px-4 text-center text-gray-300">
           <p>&copy; 2024 Tic-Tac-Toe Arena. Built for testing Multi Repository PR Orchestration.</p>
         </div>
@@ -61,4 +61,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default Layout; 
+export default Layout;
