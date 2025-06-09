@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { path: '/play', label: 'Quick Play', icon: '⚡' },
     { path: '/rooms', label: 'Rooms', icon: '🎲' },
     { path: '/leaderboard', label: 'Leaderboard', icon: '🏆' },
+    { path: '/developer', label: 'Developer', icon: '💻' },
   ];
 
   return (
