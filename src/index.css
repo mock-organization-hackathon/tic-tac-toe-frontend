@@ -2,102 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    @apply border-gray-200;
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md;
   }
   
-  body {
-    @apply font-sans antialiased;
-    font-feature-settings: 'cv11', 'ss01';
-    font-variation-settings: 'opsz' 32;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-@layer components {
-  .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  .card-header {
+    @apply border-b border-gray-200 dark:border-gray-700 px-6 py-4;
   }
   
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg shadow-primary-200;
+    @apply bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors;
   }
   
   .btn-secondary {
-    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
-  }
-  
-  .btn-success {
-    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500 shadow-lg shadow-success-200;
-  }
-  
-  .btn-danger {
-    @apply btn bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-500 shadow-lg shadow-danger-200;
-  }
-  
-  .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6;
-  }
-  
-  .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
-  }
-  
-  .game-board {
-    @apply grid grid-cols-3 gap-2 p-4 bg-white rounded-xl shadow-xl border-2 border-gray-200;
+    @apply bg-gray-600 hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-400 text-white font-medium py-2 px-4 rounded-lg transition-colors;
   }
   
   .game-cell {
-    @apply aspect-square flex items-center justify-center text-4xl font-bold bg-gray-50 rounded-lg border-2 border-gray-200 hover:bg-gray-100 transition-all duration-200 cursor-pointer;
+    @apply bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white transition-colors;
   }
   
-  .game-cell:hover:not(.occupied) {
-    @apply bg-primary-50 border-primary-300;
+  .game-board {
+    @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg;
   }
   
-  .game-cell.occupied {
-    @apply cursor-not-allowed;
+  .nav-link {
+    @apply text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors;
   }
   
-  .game-cell.x {
-    @apply text-primary-600 bg-primary-50 border-primary-300;
-  }
-  
-  .game-cell.o {
-    @apply text-danger-600 bg-danger-50 border-danger-300;
-  }
-  
-  .game-cell.winning {
-    @apply bg-success-100 border-success-400 animate-pulse;
+  .theme-toggle {
+    @apply bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 p-2 rounded-full transition-colors;
   }
 }
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
-  }
-  
-  .glass {
-    @apply backdrop-blur-sm bg-white/80 border border-white/20;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-  
-  @keyframes glow {
-    from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
-    to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
-  }
-} 
