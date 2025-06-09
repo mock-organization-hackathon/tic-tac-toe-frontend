@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { ASCII_ART } from 'tic-tac-toe-shared-types';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -14,6 +15,17 @@ const HomePage: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.1 }}
+          >
+            <pre className="text-yellow-400 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-mono leading-tight whitespace-pre overflow-x-auto">
+              {ASCII_ART}
+            </pre>
+          </motion.div>
+          
           <motion.h1
             className="text-6xl md:text-8xl font-bold text-white mb-6"
             initial={{ scale: 0.5 }}
@@ -117,4 +129,4 @@ const GameModeCard: React.FC<GameModeCardProps> = ({ title, description, icon, c
   );
 };
 
-export default HomePage; 
+export default HomePage;
