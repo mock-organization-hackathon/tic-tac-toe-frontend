@@ -72,6 +72,72 @@
   .game-cell.winning {
     @apply bg-success-100 border-success-400 animate-pulse;
   }
+
+  /* Enhanced accessibility styles for color blind users */
+  .game-mode-card {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .game-mode-card:hover {
+    @apply ring-4 ring-white/50 shadow-2xl;
+  }
+
+  .game-mode-card:focus {
+    @apply ring-4 ring-white outline-none;
+  }
+
+  /* High contrast text styles */
+  .high-contrast-text {
+    @apply text-white drop-shadow-lg;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Pattern overlay for additional visual distinction */
+  .pattern-overlay {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Additional accessibility styles */
+  .accessible-button {
+    @apply relative;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .accessible-button:focus {
+    @apply outline-none ring-2 ring-offset-2 ring-blue-500;
+  }
+
+  .accessible-button:active {
+    @apply transform scale-95;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .game-cell {
+      @apply border-4 border-black;
+    }
+    
+    .game-cell.x {
+      @apply text-black bg-white;
+    }
+    
+    .game-cell.o {
+      @apply text-white bg-black;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer utilities {
@@ -100,4 +166,4 @@
     from { box-shadow: 0 0 20px -10px theme('colors.primary.500'); }
     to { box-shadow: 0 0 20px -5px theme('colors.primary.500'); }
   }
-} 
+}
