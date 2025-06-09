@@ -11,7 +11,7 @@ import ProfilePage from './pages/ProfilePage'
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="dark bg-gray-900 text-white min-h-screen">
       <Layout>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,4 +34,4 @@ function App() {
   )
 }
 
-export default App 
+export default App
